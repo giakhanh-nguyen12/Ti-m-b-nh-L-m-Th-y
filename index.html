@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bánh Trung Thu Lâm Thủy – Gia truyền</title>
+<meta name="description" content="Tiệm bánh trung thu gia truyền Lâm Thủy – bánh trung thu, combo quà tặng và hộp quà VIP.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Lora:wght@600;700&family=Pacifico&display=swap" rel="stylesheet">
+<style>
+:root{
+  --purple:#8E2C80;        /* tím chủ đạo lấy từ logo */
+  --purple-dark:#5E1B54;
+  --purple-deep:#3F0F39;
+  --pink:#F6C9D6;          /* hồng nền logo */
+  --pink-light:#FCEBF0;
+  --pink-soft:#FFF6F8;
+  --gold:#D9A441;
+  --text:#3a2236;
+  --radius:22px;
+  --shadow:0 10px 30px rgba(142,44,128,.18);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Montserrat',sans-serif;color:var(--text);background:var(--pink-soft);line-height:1.6}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+.container{width:min(1180px,92%);margin-inline:auto}
+section{padding:70px 0;scroll-margin-top:90px}
+.sec-title{font-family:'Lora',serif;font-size:clamp(26px,3.4vw,38px);color:var(--purple);text-align:center;letter-spacing:.5px;text-transform:uppercase}
+.sec-line{display:flex;align-items:center;justify-content:center;gap:12px;margin:10px 0 36px;color:var(--gold)}
+.sec-line::before,.sec-line::after{content:"";width:80px;height:2px;background:linear-gradient(90deg,transparent,var(--gold))}
+.sec-line::after{transform:scaleX(-1)}
+.btn{display:inline-block;border:none;cursor:pointer;font:600 15px 'Montserrat',sans-serif;padding:12px 26px;border-radius:50px;background:var(--purple);color:#fff;transition:.25s}
+.btn:hover{background:var(--purple-dark);transform:translateY(-2px)}
+.btn.light{background:#fff;color:var(--purple)}
+.btn.light:hover{background:var(--pink)}
+.btn.outline{background:transparent;border:2px solid var(--purple);color:var(--purple)}
+.btn.outline:hover{background:var(--purple);color:#fff}
+
+/* ===== TOP BAR ===== */
+.topbar{background:var(--purple-deep);color:#f3dcef;font-size:13.5px}
+.topbar .container{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px;padding:8px 0}
+.topbar .info{display:flex;flex-wrap:wrap;gap:6px 22px}
+.topbar .tools{display:flex;align-items:center;gap:8px}
+.topbar button{background:transparent;border:1px solid rgba(255,255,255,.35);color:#fff;border-radius:20px;padding:3px 14px;cursor:pointer;font:500 13px 'Montserrat',sans-serif}
+.topbar button.active{background:var(--pink);color:var(--purple-dark);border-color:var(--pink)}
+.searchbox{display:none;background:var(--purple-dark);padding:10px 0}
+.searchbox.open{display:block}
+.searchbox input{width:100%;padding:11px 18px;border-radius:30px;border:none;font:15px 'Montserrat',sans-serif;outline:none}
+
+/* ===== HEADER ===== */
+header{background:var(--pink);position:sticky;top:0;z-index:50;box-shadow:0 4px 18px rgba(94,27,84,.15)}
+header .container{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:10px 0}
+.logo{display:flex;align-items:center;gap:12px}
+.logo img{width:64px;height:64px;border-radius:50%;object-fit:cover;box-shadow:0 2px 8px rgba(0,0,0,.15)}
+.logo .fallback{display:none;width:64px;height:64px;border-radius:50%;background:#fff;border:3px solid var(--purple);color:var(--purple);align-items:center;justify-content:center;font:700 22px 'lora',serif}
+.logo .txt{line-height:1.1}
+.logo .txt b{display:block;font:400 26px 'Pacifico',cursive;color:var(--purple)}
+.logo .txt small{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--purple-dark)}
+nav ul{list-style:none;display:flex;gap:6px;align-items:center}
+nav a{display:block;padding:9px 18px;border-radius:30px;font-weight:600;color:var(--purple-dark);transition:.2s}
+nav a:hover,nav a.active{background:var(--purple);color:#fff}
+.cart-btn{position:relative;background:var(--purple);color:#fff;border:none;border-radius:50%;width:46px;height:46px;font-size:20px;cursor:pointer}
+.cart-btn span{position:absolute;top:-4px;right:-4px;background:var(--gold);color:#fff;font:700 12px sans-serif;min-width:20px;height:20px;border-radius:10px;display:flex;align-items:center;justify-content:center;padding:0 5px}
+.burger{display:none;background:none;border:none;font-size:28px;color:var(--purple);cursor:pointer}
+
+/* ===== BANNER ===== */
+.slider{position:relative;overflow:hidden;border-radius:0 0 var(--radius) var(--radius);height:min(520px,62vw);min-height:340px}
+.slide{position:absolute;inset:0;display:flex;align-items:center;opacity:0;transition:opacity .9s;background-size:cover}
+.slide.active{opacity:1;z-index:1}
+.s1{background:url('banner1.jpg') center/cover no-repeat}
+.s2{background:url('banner2.jpg') center/cover no-repeat}
+.s3{background:url('banner3.jpg') center/cover no-repeat}
+.slide .container{display:none;grid-template-columns:1.1fr .9fr;align-items:center;gap:20px}
+.slide h2{font:700 clamp(28px,4.6vw,54px)/1.15 'lora',serif;color:#fff;margin-bottom:14px}
+.slide h2 em{color:var(--pink);font-style:normal}
+.slide p{color:#f5dff0;font-size:clamp(14px,1.6vw,18px);margin-bottom:24px;max-width:520px}
+.moon{width:min(300px,60%);margin-inline:auto;filter:drop-shadow(0 18px 30px rgba(0,0,0,.35));animation:float 5s ease-in-out infinite}
+@keyframes float{50%{transform:translateY(-14px) rotate(3deg)}}
+.moon.half{-webkit-mask-image:linear-gradient(to right,transparent,#000 25%);mask-image:linear-gradient(to right,transparent,#000 25%)}
+.arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:5;width:46px;height:46px;border-radius:50%;border:none;background:rgba(255,255,255,.85);color:var(--purple);font-size:22px;cursor:pointer}
+.arrow.prev{left:16px}.arrow.next{right:16px}
+.dots{position:absolute;bottom:16px;width:100%;display:flex;justify-content:center;gap:10px;z-index:5}
+.dots i{width:12px;height:12px;border-radius:50%;background:rgba(255,255,255,.5);cursor:pointer}
+.dots i.active{background:#fff;width:32px;border-radius:8px}
+
+/* ===== ABOUT ===== */
+.about{display:grid;grid-template-columns:1.1fr .9fr;gap:30px;align-items:stretch}
+.about .box{background:#fff;border-radius:var(--radius);padding:38px;box-shadow:var(--shadow);border:1px solid var(--pink)}
+.about h3{font:700 28px 'lora',serif;color:var(--purple);margin-bottom:6px}
+.about .tag{display:inline-block;color:var(--gold);font-weight:600;letter-spacing:3px;font-size:13px;margin-bottom:14px}
+.about p{margin-bottom:12px}
+.stats{display:flex;gap:26px;margin-top:20px;flex-wrap:wrap}
+.stats b{display:block;font:700 30px 'lora',serif;color:var(--purple)}
+.stats span{font-size:13px;color:#7c5a77}
+.about .photo{border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);background:linear-gradient(160deg,var(--pink),#e79bbb);display:flex;align-items:center;justify-content:center;min-height:300px;position:relative}
+.about .photo img.real{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.about .photo .moon{width:60%;animation:none}
+
+/* ===== PRODUCTS ===== */
+#banh-trung-thu{background:linear-gradient(180deg,var(--pink-light),var(--pink-soft))}
+.group-title{display:flex;align-items:center;gap:14px;margin:10px 0 24px;font:700 22px 'lora',serif;color:var(--purple-dark)}
+.group-title::after{content:"";flex:1;height:2px;background:linear-gradient(90deg,var(--purple),transparent)}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-bottom:46px}
+.card{background:#fff;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);transition:.3s;display:flex;flex-direction:column;border:1px solid var(--pink)}
+.card:hover{transform:translateY(-8px);box-shadow:0 18px 40px rgba(142,44,128,.28)}
+.card .img{position:relative;aspect-ratio:4/3;background:linear-gradient(145deg,var(--pink-light),var(--pink));display:flex;align-items:center;justify-content:center}
+.card .img img.real{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.card .img svg{width:58%}
+.badge{position:absolute;top:12px;left:12px;background:var(--purple);color:#fff;font-size:12px;font-weight:600;padding:4px 12px;border-radius:20px;z-index:2}
+.card .body{padding:18px 20px 22px;display:flex;flex-direction:column;gap:6px;flex:1}
+.card h4{font:700 19px 'lora',serif;color:var(--purple-dark)}
+.card .desc{font-size:13.5px;color:#7c5a77;flex:1}
+.card .row{display:flex;align-items:center;justify-content:space-between;margin-top:10px;gap:10px}
+.price{font-weight:700;font-size:19px;color:var(--purple)}
+.price small{font-size:12px;font-weight:500;color:#a07a9a}
+.add{background:var(--purple);color:#fff;border:none;border-radius:30px;padding:9px 16px;font:600 13.5px 'Montserrat',sans-serif;cursor:pointer;transition:.2s;white-space:nowrap}
+.add:hover{background:var(--gold)}
+.card.hidden{display:none}
+
+/* ===== VIP ===== */
+#hop-vip{background:linear-gradient(135deg,var(--purple-deep),var(--purple));color:#fff;position:relative;overflow:hidden}
+#hop-vip .sec-title{color:#fff}
+#hop-vip .sec-line{color:var(--pink)}
+#hop-vip .sec-line::before,#hop-vip .sec-line::after{background:linear-gradient(90deg,transparent,var(--pink))}
+.vip-sub{text-align:center;max-width:620px;margin:-20px auto 36px;color:#f1d3ea}
+#hop-vip .grid{margin-bottom:0}
+#hop-vip .card{border:2px solid var(--gold)}
+#hop-vip .badge{background:var(--gold)}
+
+/* ===== CONTACT ===== */
+.contact-wrap{display:grid;grid-template-columns:1fr 1fr;gap:34px;background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;border:1px solid var(--pink)}
+.contact-info{background:linear-gradient(160deg,var(--purple),var(--purple-dark));color:#fff;padding:40px}
+.contact-info h3{font:700 26px 'lora',serif;margin-bottom:14px}
+.contact-info li{list-style:none;margin:10px 0;display:flex;gap:10px}
+form{padding:40px 40px 40px 6px}
+form h3{font:700 24px 'lora',serif;color:var(--purple);margin-bottom:4px}
+form p.s{font-size:14px;color:#7c5a77;margin-bottom:18px}
+form input,form textarea{width:100%;padding:12px 16px;border:1.5px solid var(--pink);border-radius:14px;font:15px 'Montserrat',sans-serif;margin-bottom:12px;outline:none;background:var(--pink-soft)}
+form input:focus,form textarea:focus{border-color:var(--purple)}
+.ok{display:none;background:#e8f7ec;color:#1b6b34;padding:12px 16px;border-radius:12px;margin-top:12px;font-size:14px}
+
+/* ===== NEWS ===== */
+#tin-tuc{background:var(--pink-light)}
+.news{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+.news article{cursor:pointer;background:#fff;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);transition:.3s;border:1px solid var(--pink)}
+.news article:hover{transform:translateY(-6px)}
+.news .th{aspect-ratio:16/10;background:linear-gradient(135deg,var(--pink),#d98bb5);display:flex;align-items:center;justify-content:center;font-size:52px;position:relative}
+.news .th img.real{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.news .in{padding:20px}
+.news time{font-size:12.5px;color:var(--gold);font-weight:600}
+.news h4{font:700 19px 'lora',serif;color:var(--purple-dark);margin:6px 0}
+.news p{font-size:14px;color:#6d4f69}
+.news a.more{display:inline-block;margin-top:10px;color:var(--purple);font-weight:600;font-size:14px}
+
+/* ===== FOOTER ===== */
+footer{background:var(--purple-deep);color:#e8cfe3;padding:56px 0 0}
+.fgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
+.fbox{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:var(--radius);padding:26px}
+.fbox h5{font:700 19px 'lora',serif;color:var(--pink);margin-bottom:12px}
+.fbox li{list-style:none;font-size:14.5px;margin:6px 0;display:flex;justify-content:space-between;gap:10px;border-bottom:1px dashed rgba(255,255,255,.12);padding-bottom:5px}
+.fbox li.plain{border:none;justify-content:flex-start}
+.fbox li span:last-child{color:var(--gold);font-weight:600;white-space:nowrap}
+.copy{text-align:center;padding:22px 0;margin-top:40px;border-top:1px solid rgba(255,255,255,.12);font-size:13.5px;color:#c9a5c2}
+
+/* ===== CART DRAWER ===== */
+.overlay{position:fixed;inset:0;background:rgba(40,10,35,.55);z-index:90;display:none}
+.overlay.open{display:block}
+.drawer{position:fixed;top:0;right:-440px;width:min(420px,100%);height:100%;background:#fff;z-index:100;transition:.35s;display:flex;flex-direction:column;box-shadow:-10px 0 40px rgba(0,0,0,.25)}
+.drawer.open{right:0}
+.drawer header{position:static;background:var(--purple);color:#fff;padding:18px 22px;display:flex;justify-content:space-between;align-items:center;box-shadow:none}
+.drawer header h3{font:700 20px 'lora',serif}
+.drawer header button{background:none;border:none;color:#fff;font-size:26px;cursor:pointer}
+.items{flex:1;overflow:auto;padding:16px 22px}
+.item{display:flex;gap:12px;align-items:center;padding:12px 0;border-bottom:1px solid var(--pink)}
+.item .nm{flex:1;font-weight:600;font-size:14.5px}
+.item .nm small{display:block;color:var(--purple);font-weight:500}
+.qty{display:flex;align-items:center;gap:8px}
+.qty button{width:28px;height:28px;border-radius:50%;border:1.5px solid var(--purple);background:#fff;color:var(--purple);cursor:pointer;font-weight:700}
+.empty{text-align:center;color:#a07a9a;margin-top:60px}
+.dfoot{padding:18px 22px;border-top:2px solid var(--pink)}
+.total{display:flex;justify-content:space-between;font-weight:700;font-size:18px;margin-bottom:12px;color:var(--purple-dark)}
+.toast{position:fixed;bottom:26px;left:50%;transform:translateX(-50%) translateY(100px);background:var(--purple-dark);color:#fff;padding:12px 24px;border-radius:30px;z-index:120;transition:.35s;font-size:14.5px}
+.toast.show{transform:translateX(-50%) translateY(0)}
+.hotline{position:fixed;right:18px;bottom:18px;z-index:60;background:var(--purple);color:#fff;border-radius:40px;padding:12px 20px;font-weight:600;box-shadow:var(--shadow);animation:pulse 2s infinite}
+@keyframes pulse{50%{box-shadow:0 0 0 12px rgba(142,44,128,.15)}}
+
+/* ===== XEM ẢNH SẢN PHẨM ===== */
+.card.has-gallery .img{cursor:zoom-in}
+.photo-count{position:absolute;bottom:10px;right:10px;background:rgba(63,15,57,.8);color:#fff;font-size:12px;padding:3px 10px;border-radius:20px;z-index:2}
+.lightbox{position:fixed;inset:0;background:rgba(30,8,27,.88);z-index:200;display:none;align-items:center;justify-content:center;padding:20px}
+.lightbox.open{display:flex}
+.lb-box{background:#fff;border-radius:var(--radius);width:min(760px,100%);max-height:94vh;overflow:auto;padding:18px;position:relative}
+.lb-box h3{font:700 22px 'Lora',serif;color:var(--purple);margin:0 40px 12px 4px}
+.lb-main{position:relative;background:var(--pink-light);border-radius:16px;overflow:hidden}
+.lb-main img{width:100%;max-height:60vh;object-fit:contain;display:block;margin:auto}
+.lb-close{position:absolute;top:12px;right:14px;width:36px;height:36px;border-radius:50%;border:none;background:var(--purple);color:#fff;font-size:22px;cursor:pointer}
+.lb-nav{position:absolute;top:50%;transform:translateY(-50%);width:40px;height:40px;border-radius:50%;border:none;background:rgba(255,255,255,.9);color:var(--purple);font-size:22px;cursor:pointer}
+.lb-nav.l{left:10px}.lb-nav.r{right:10px}
+.lb-thumbs{display:flex;gap:10px;margin-top:12px;justify-content:center}
+.lb-thumbs img{width:90px;height:68px;object-fit:cover;border-radius:10px;border:3px solid transparent;cursor:pointer;opacity:.6}
+.lb-thumbs img.on{border-color:var(--purple);opacity:1}
+/* ===== NỘI DUNG BÀI TIN TỨC ===== */
+#newsBody p{margin-bottom:12px}
+#newsBody h4{font:700 18px 'Lora',serif;color:var(--purple);margin:16px 0 6px}
+#newsBody ul{margin:0 0 12px 20px}
+/* ===== RESPONSIVE ===== */
+@media(max-width:960px){
+  .grid,.news,.fgrid{grid-template-columns:repeat(2,1fr)}
+  .about,.contact-wrap{grid-template-columns:1fr}
+  form{padding:6px 28px 34px}
+  .slide .container{grid-template-columns:1fr}
+  .slide .moon{display:none}
+}
+@media(max-width:720px){
+  .burger{display:block}
+  nav{position:absolute;top:100%;left:0;right:0;background:var(--pink);display:none;padding:10px 4%;box-shadow:0 12px 20px rgba(0,0,0,.12)}
+  nav.open{display:block}
+  nav ul{flex-direction:column;align-items:stretch}
+  .grid,.news,.fgrid{grid-template-columns:1fr}
+  .hotline{display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- ============ TOP BAR ============ -->
+<div class="topbar">
+  <div class="container">
+    <div class="info">
+      <span>🥮 <b data-vi="Tiệm bánh Lâm Thủy" data-en="Lâm Thủy Bakery">Tiệm bánh Lâm Thủy</b></span>
+      <span>📍 <span data-vi="Địa chỉ: 344 Tây Sơn, Đống Đa, Hà Nội" data-en="Address: 344 Tay Son, Dong Da, Ha Noi City">Địa chỉ: 344 Tây Sơn, Đống Đa, Hà Nội</span></span>
+      <span>📞 <span data-vi="SĐT" data-en="Tel">SĐT</span>: 033 981 9526</span>
+    </div>
+    <div class="tools">
+      <button id="btnVN" class="active">VN</button>
+      <button id="btnEN">EN</button>
+      <button id="btnSearch" data-vi="🔍 Tìm kiếm" data-en="🔍 Search">🔍 Tìm kiếm</button>
+    </div>
+  </div>
+</div>
+<div class="searchbox" id="searchbox">
+  <div class="container">
+    <input id="searchInput" type="search" placeholder="Nhập tên bánh, combo, hộp quà..." data-vi-ph="Nhập tên bánh, combo, hộp quà..." data-en-ph="Type a cake, combo or gift box name...">
+  </div>
+</div>
+
+<!-- ============ HEADER ============ -->
+<header>
+  <div class="container">
+    <a href="#top" class="logo" id="top">
+      <!-- Đặt file logo cùng thư mục và đổi tên thành logo.jpg (hoặc sửa đường dẫn src) -->
+      <img src="logo.jpg" alt="Logo Lâm Thủy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="fallback">LT</div>
+      <div class="txt"><b>Lâm Thủy</b><small data-vi="Bánh trung thu gia truyền" data-en="Heritage mooncakes">Bánh trung thu gia truyền</small></div>
+    </a>
+    <button class="burger" id="burger" aria-label="Menu">☰</button>
+    <nav id="nav">
+      <ul>
+        <li><a href="#top" class="active" data-vi="Trang chủ" data-en="Home">Trang chủ</a></li>
+        <li><a href="#banh-trung-thu" data-vi="Bánh Trung Thu" data-en="Mooncakes">Bánh Trung Thu</a></li>
+        <li><a href="#hop-vip" data-vi="Hộp VIP" data-en="VIP Boxes">Hộp VIP</a></li>
+        <li><a href="#lien-he" data-vi="Liên hệ" data-en="Contact">Liên hệ</a></li>
+        <li><a href="#tin-tuc" data-vi="Tin tức" data-en="News">Tin tức</a></li>
+        <li><button class="cart-btn" id="cartBtn" aria-label="Giỏ hàng">🛒<span id="cartCount">0</span></button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<!-- ============ BANNER SLIDER ============ -->
+<div class="slider" id="slider">
+  <div class="slide s1 active"><div class="container">
+    <div>
+      <h2 data-vi="Bánh Trung Thu <em>Lâm Thủy</em><br>Hương vị gia truyền" data-en="<em>Lâm Thủy</em> Mooncakes<br>A family-secret flavour">Bánh Trung Thu <em>Lâm Thủy</em><br>Hương vị gia truyền</h2>
+      <p data-vi="Nhân bánh chọn lọc, làm thủ công mỗi ngày – gửi trọn tình thân đoàn viên đến gia đình bạn." data-en="Hand-picked fillings, made fresh by hand every day – bringing the warmth of reunion to your family.">Nhân bánh chọn lọc, làm thủ công mỗi ngày – gửi trọn tình thân đoàn viên đến gia đình bạn.</p>
+      <a href="#banh-trung-thu" class="btn light" data-vi="Xem sản phẩm" data-en="View products">Xem sản phẩm</a>
+    </div>
+    <img class="moon half" src="banner1.jpg" alt="Bánh trung thu Lâm Thủy">
+  </div></div>
+  <div class="slide s2"><div class="container">
+    <div>
+      <h2 data-vi="Combo quà tặng<br><em>Ưu đãi mùa trăng</em>" data-en="Gift combos<br><em>Harvest-moon offers</em>">Combo quà tặng<br><em>Ưu đãi mùa trăng</em></h2>
+      <p data-vi="Nhiều lựa chọn combo tiết kiệm, phù hợp biếu tặng người thân, bạn bè và đối tác." data-en="Many value combos, perfect for relatives, friends and business partners.">Nhiều lựa chọn combo tiết kiệm, phù hợp biếu tặng người thân, bạn bè và đối tác.</p>
+      <a href="#banh-trung-thu" class="btn light" data-vi="Chọn combo" data-en="Pick a combo">Chọn combo</a>
+    </div>
+    <img class="moon half" src="banner2.jpg" alt="Combo quà tặng">
+  </div></div>
+  <div class="slide s3"><div class="container">
+    <div>
+      <h2 data-vi="Hộp quà <em>VIP</em><br>Sang trọng – Đẳng cấp" data-en="<em>VIP</em> gift boxes<br>Elegant &amp; prestigious">Hộp quà <em>VIP</em><br>Sang trọng – Đẳng cấp</h2>
+      <p data-vi="Thiết kế tinh tế, nguyên liệu cao cấp – món quà trao gửi trọn vẹn tâm ý." data-en="Refined design and premium ingredients – a gift that says it all.">Thiết kế tinh tế, nguyên liệu cao cấp – món quà trao gửi trọn vẹn tâm ý.</p>
+      <a href="#hop-vip" class="btn light" data-vi="Khám phá hộp VIP" data-en="Discover VIP boxes">Khám phá hộp VIP</a>
+    </div>
+    <img class="moon half" src="banner3.jpg" alt="Hộp quà VIP">
+  </div></div>
+  <button class="arrow prev" id="prev">‹</button>
+  <button class="arrow next" id="next">›</button>
+  <div class="dots" id="dots"></div>
+</div>
+
+<!-- ============ GIỚI THIỆU ============ -->
+<section>
+  <div class="container about">
+    <div class="box">
+      <span class="tag" data-vi="VỀ CHÚNG TÔI" data-en="ABOUT US">VỀ CHÚNG TÔI</span>
+      <h3 data-vi="Giới thiệu về Lâm Thủy" data-en="About Lâm Thủy">Giới thiệu về Lâm Thủy</h3>
+      <p data-vi="Lâm Thủy là tiệm bánh trung thu gia truyền, giữ trọn công thức được trao lại qua nhiều thế hệ. Mỗi chiếc bánh đều được làm từ nguyên liệu chọn lọc, không chất bảo quản và hoàn thiện thủ công." data-en="Lâm Thủy is a heritage mooncake bakery, preserving a recipe handed down through generations. Every cake is made with carefully selected ingredients, no preservatives, and finished by hand.">Lâm Thủy là tiệm bánh trung thu gia truyền, giữ trọn công thức được trao lại qua nhiều thế hệ. Mỗi chiếc bánh đều được làm từ nguyên liệu chọn lọc, không chất bảo quản và hoàn thiện thủ công.</p>
+      <p data-vi="Chúng tôi mong muốn mỗi mùa Trung Thu, chiếc bánh của Lâm Thủy sẽ là sợi dây gắn kết gia đình và gửi gắm tấm lòng của bạn đến những người thân yêu." data-en="We hope that every Mid-Autumn season, a Lâm Thủy mooncake becomes a bond between family members and carries your heartfelt wishes to loved ones.">Chúng tôi mong muốn mỗi mùa Trung Thu, chiếc bánh của Lâm Thủy sẽ là sợi dây gắn kết gia đình và gửi gắm tấm lòng của bạn đến những người thân yêu.</p>
+      <div class="stats">
+        <div><b>10+</b><span data-vi="Năm kinh nghiệm" data-en="Years of experience">Năm kinh nghiệm</span></div>
+        <div><b>4</b><span data-vi="Cơ sở" data-en="Branches">Cơ sở</span></div>
+        <div><b>100%</b><span data-vi="Làm thủ công" data-en="Handmade">Làm thủ công</span></div>
+      </div>
+    </div>
+    <div class="photo">
+      <!-- Thay bằng ảnh thật: <img class="real" src="anhgioithieu.jpg"> -->
+      <img class="real" src="anhgioithieu.jpg" alt="Tiệm bánh Lâm Thủy" onerror="this.remove()">
+      <svg class="moon" viewBox="0 0 200 200" data-moon data-hue="3"></svg>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BÁNH TRUNG THU ============ -->
+<section id="banh-trung-thu">
+  <div class="container">
+    <h2 class="sec-title" data-vi="Bánh Trung Thu" data-en="Mooncakes">Bánh Trung Thu</h2>
+    <div class="sec-line">✦</div>
+
+    <div class="group-title" data-vi="Các sản phẩm bán chạy" data-en="Best sellers">Các sản phẩm bán chạy</div>
+    <div class="grid" id="gridBest"></div>
+
+    <div class="group-title" data-vi="Combo sản phẩm" data-en="Product combos">Combo sản phẩm</div>
+    <div class="grid" id="gridCombo"></div>
+  </div>
+</section>
+
+<!-- ============ HỘP VIP ============ -->
+<section id="hop-vip">
+  <div class="container">
+    <h2 class="sec-title" data-vi="Hộp VIP" data-en="VIP Boxes">Hộp VIP</h2>
+    <div class="sec-line">✦</div>
+    <p class="vip-sub" data-vi="Bộ sưu tập hộp quà cao cấp dành tặng đối tác và người thân – sang trọng, tinh tế, đậm dấu ấn." data-en="Our premium gift-box collection for partners and loved ones – elegant, refined, memorable.">Bộ sưu tập hộp quà cao cấp dành tặng đối tác và người thân – sang trọng, tinh tế, đậm dấu ấn.</p>
+    <div class="grid" id="gridVip"></div>
+  </div>
+</section>
+
+<!-- ============ LIÊN HỆ ============ -->
+<section id="lien-he">
+  <div class="container">
+    <h2 class="sec-title" data-vi="Liên hệ chúng tôi" data-en="Contact us">Liên hệ chúng tôi</h2>
+    <div class="sec-line">✦</div>
+    <div class="contact-wrap">
+      <div class="contact-info">
+        <h3>Lâm Thủy</h3>
+        <ul>
+          <li>📞 <span>Hotline: 033 981 9526</span></li>
+          <li>🌐 <span>Website: www.banhtrungthulamthuy.vn</span></li>
+          <li>📍 <span data-vi="Cơ sở 1: 24 ngõ 71 Hoàng Văn Thái, Thanh Xuân, Hà Nội" data-en="Branch 1: No.24, Alley 71 Hoang Van Thai Street, Thanh Xuan District, Ha Noi City, Vietnam">Cơ sở 1: 24 ngõ 71 Hoàng Văn Thái, Thanh Xuân, Hà Nội</span></li>
+          <li>📍 <span data-vi="Cơ sở 2: 344 Tây Sơn, Đống Đa, Hà Nội" data-en="Branch 2: No.344 Tay Son Street, Dong Da District, Ha Noi City, Vietnam">Cơ sở 2: 344 Tây Sơn, Đống Đa, Hà Nội</span></li>
+          <li>📍 <span data-vi="Cơ sở 3: 357 Bà Hạt, Quận 10, Thành phố Hồ Chí Minh" data-en="Branch 3: No.357, Ba Hat Street, District 10, Ho Chi Minh City, VIetnam">Cơ sở 3: 357 Bà Hạt, Quận 10, Thành phố Hồ Chí Minh</span></li>
+          <li>📍 <span data-vi="Cơ sở 4: La Mai, Phường Tây Hoa Lư, Ninh Bình" data-en="Branch 4: La Mai, Tay Hoa Lu Ward, Ninh Binh, Vietnam">Cơ sở 4: La Mai, Phường Tây Hoa Lư, Ninh Bình</span></li>
+        </ul>
+      </div>
+      <form id="contactForm">
+        <h3 data-vi="Đăng ký tư vấn miễn phí" data-en="Free consultation">Đăng ký tư vấn miễn phí</h3>
+        <p class="s" data-vi="Để lại thông tin, Lâm Thủy sẽ liên hệ lại trong thời gian sớm nhất." data-en="Leave your details and we will get back to you as soon as possible.">Để lại thông tin, Lâm Thủy sẽ liên hệ lại trong thời gian sớm nhất.</p>
+        <input type="text" id="fName" placeholder="Họ & tên" data-vi-ph="Họ & tên" data-en-ph="Full name">
+        <input type="tel" id="fPhone" placeholder="Số điện thoại *" required data-vi-ph="Số điện thoại *" data-en-ph="Phone number *">
+        <input type="text" id="fAddr" placeholder="Địa chỉ" data-vi-ph="Địa chỉ" data-en-ph="Address">
+        <textarea id="fOrder" rows="3" placeholder="Mã sản phẩm & số lượng" data-vi-ph="Mã sản phẩm & số lượng" data-en-ph="Product and quantity"></textarea>
+        <button class="btn" type="submit" data-vi="Đăng ký tư vấn miễn phí" data-en="Request free consultation">Đăng ký tư vấn miễn phí</button>
+        <div class="ok" id="ok" data-vi="✔ Đăng ký thành công! Lâm Thủy sẽ liên hệ với bạn sớm nhất." data-en="✔ Submitted! Lâm Thủy will contact you shortly.">✔ Đăng ký thành công! Lâm Thủy sẽ liên hệ với bạn sớm nhất.</div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TIN TỨC ============ -->
+<section id="tin-tuc">
+  <div class="container">
+    <h2 class="sec-title" data-vi="Tin tức" data-en="News">Tin tức</h2>
+    <div class="sec-line">✦</div>
+    <div class="news" id="newsGrid"></div>
+      
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="container">
+    <div class="fgrid">
+      <div class="fbox">
+        <h5 data-vi="Liên hệ" data-en="Contact">Liên hệ</h5>
+        <ul>
+          <li class="plain">📞 Hotline: 033 981 9526</li>
+          <li class="plain">🌐 Website: www.banhtrungthulamthuy.vn</li>
+          
+<li class="plain">📍 <span data-vi="4 cơ sở:" data-en="4 branches:">4 cơ sở:</span></li>
+
+<li class="plain">
+  <span data-vi="Cơ sở 1: 24 ngõ 71, Hoàng Văn Thái, Thanh Xuân, Hà Nội"
+        data-en="Branch 1: 24, Alley 71, Hoang Van Thai Street, Thanh Xuan District, Hanoi">
+    Cơ sở 1: 24 ngõ 71, Hoàng Văn Thái, Thanh Xuân, Hà Nội
+  </span>
+</li>
+
+<li class="plain">
+  <span data-vi="Cơ sở 2: 344 Tây Sơn, Đống Đa, Hà Nội"
+        data-en="Branch 2: 344 Tay Son Street, Dong Da District, Hanoi">
+    Cơ sở 2: 344 Tây Sơn, Đống Đa, Hà Nội
+  </span>
+</li>
+
+<li class="plain">
+  <span data-vi="Cơ sở 3: 357 Bà Hạt, Quận 10, Thành phố Hồ Chí Minh"
+        data-en="Branch 3: 357 Ba Hat Street, District 10, Ho Chi Minh City">
+    Cơ sở 3: 357 Bà Hạt, Quận 10, Thành phố Hồ Chí Minh
+  </span>
+</li>
+
+<li class="plain">
+  <span data-vi="Cơ sở 4: La Mai, Phường Tây Hoa Lư, Ninh Bình"
+        data-en="Branch 4: La Mai, Tay Hoa Lu Ward, Ninh Binh Province">
+    Cơ sở 4: La Mai, Phường Tây Hoa Lư, Ninh Bình
+  </span>
+</li>
+        </ul>
+      </div>
+      <div class="fbox">
+        <h5 data-vi="Danh mục sản phẩm" data-en="Product list">Danh mục sản phẩm</h5>
+        <ul id="footList"></ul>
+      </div>
+      <div class="fbox">
+        <h5 data-vi="Hộp quà VIP" data-en="VIP gift boxes">Hộp quà VIP</h5>
+        <ul id="footVip"></ul>
+      </div>
+    </div>
+    <div class="copy">© 2026 Bánh Trung Thu Lâm Thủy – Gia truyền. All rights reserved.</div>
+  </div>
+</footer>
+
+<a class="hotline" href="tel:033 981 9526">📞 033 981 9526</a>
+
+<!-- ============ GIỎ HÀNG ============ -->
+<div class="overlay" id="overlay"></div>
+<aside class="drawer" id="drawer">
+  <header><h3 data-vi="Giỏ hàng của bạn" data-en="Your cart">Giỏ hàng của bạn</h3><button id="closeCart">×</button></header>
+  <div class="items" id="cartItems"></div>
+  <div class="dfoot">
+    <div class="total"><span data-vi="Tạm tính" data-en="Subtotal">Tạm tính</span><span id="cartTotal">0đ</span></div>
+    <button class="btn" style="width:100%" id="checkout" data-vi="Đặt hàng / Tư vấn" data-en="Order / Consult">Đặt hàng / Tư vấn</button>
+  </div>
+</aside>
+<div class="lightbox" id="lightbox">
+  <div class="lb-box">
+    <button class="lb-close" id="lbClose">×</button>
+    <h3 id="lbTitle"></h3>
+    <div class="lb-main">
+      <button class="lb-nav l" id="lbPrev">‹</button>
+      <img id="lbImg" src="" alt="">
+      <button class="lb-nav r" id="lbNext">›</button>
+    </div>
+    <div class="lb-thumbs" id="lbThumbs"></div>
+  </div>
+</div>
+<div class="lightbox" id="newsBox">
+  <div class="lb-box">
+    <button class="lb-close" id="newsClose">×</button>
+    <h3 id="newsTitle"></h3>
+    <time id="newsDate" style="color:var(--gold);font-weight:600;font-size:13px"></time>
+    <div id="newsBody" style="margin-top:12px;line-height:1.8"></div>
+  </div>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+/* =====================================================
+   DỮ LIỆU SẢN PHẨM – SỬA TÊN, GIÁ, MÔ TẢ, ẢNH TẠI ĐÂY
+   img: tên file ảnh (để cùng thư mục). Để trống "" sẽ dùng hình minh họa.
+   ===================================================== */
+const BEST = [
+  {id:"B1",name:"Bánh trung thu matcha cacao 85gr",desc:"Bánh nướng với 2 hương vị mới, mang đến trải nghiệm ẩm thực phong phú.",price:20000,img:"banh7.jpg",badge:"Bán chạy"},
+  {id:"B2",name:"Bánh trung thu cổ truyền nướng dẻo",desc:"Bánh trung thu cổ truyền bánh quanh năm. Bánh luôn được ra lò mỗi ngày đầy đủ 10 vị cả nướng cả dẻo.",price:25000,img:"banh1.jpg",badge:"Bán chạy"},
+  {id:"B3",name:"Bánh trung thu mochi trứng ruốc 300gr",desc:"Với nhân mochi và trứng ruốc, bánh mang đến hương vị độc đáo và hấp dẫn.",price:65000,img:"banh2.jpg",badge:"Bán chạy"},
+  {id:"B4",name:"Bánh trung thu nhân thập cẩm truyền thống",desc:"Mang lại hương vị quen thuộc mỗi khi nhắc đến Trung thu.",price:30000,img:"banh8.jpg"},
+  {id:"B5",name:"Bánh nướng 80gr lava trứng chảy",desc:"Vị béo ngậy của trứng chảy hoàn toàn là lựa chọn phù hợp để thưởng thức.",price:20000,img:"banh6.jpg"},
+  {id:"B6",name:"Bánh dẻo kem trứng 350gr",desc:"Vỏ dẻo trà xanh, nhân kem trứng thơm ngon.",price:120000,img:"banh5.jpg"}
+];
+const COMBO = [
+  {id:"C1",name:"Combo 2 bánh trung thu nướng mochi",desc:"Combo bao gồm 2 bánh trung thu nướng mochi trứng, trọng lượng 300gr.",price:135000,img:"combo5.jpg"},
+  {id:"C2",name:"Combo 1 nướng 1 dẻo loại 300gr Lâm Thủy",desc:"Combo này phù hợp cho những ai yêu thích sự kết hợp giữa món nướng và dẻo.",price:175000,img:"combo4.jpg"},
+  {id:"C3",name:"Combo Đắt khách - 4 bánh trung thu Lâm Thủy",desc:"Combo này là lựa chọn hoàn hảo cho những ai muốn mang đến không gian ấm cúng, đậm đà hương vị.",price:75000,img:"combo1.jpg"},
+  {id:"C4",name:"Hộp 4 bánh trung thu nướng 160gr 4 vị Lâm Thủy kèm túi",desc:"Hộp 4 bánh trung thu nướng 4 vị Lâm Thủy là lựa chọn hoàn hảo cho những ai yêu thích bánh trung thu nướng.",price:150000,img:"combo7.jpg"},
+  {id:"C5",name:"Hộp 6 bánh trung thu Lâm Thuỷ các vị",desc:"Hộp 6 bánh trung thu nướng là món quà hoàn hảo cho những dịp đặc biệt. Mang đến niềm vui và sự bất ngờ cho người nhận.",price:210000,img:"combo2.jpg"},
+  {id:"C6",name:"Combo Hoa Hảo Nguyệt Viên",desc:" Với hoa văn tinh xảo cùng màu sắc bắt mắt, combo không chỉ mang đến trải nghiệm thưởng thức hấp dẫn mà còn là món quà ý nghĩa, gửi trao yêu thương và lời chúc đoàn viên trong mùa Trung Thu.",price:200000,img:"combo8.jpg"} ];
+
+const VIP = [
+  {id:"V1",name:"Hộp VIP Trống Đồng",desc:"4 bánh cao cấp + hộp Trống Đồng Việt Nam.",price:350000,imgs:["vip1-a.jpg","vip1-b.jpg"],badge:"VIP"},
+  {id:"V2",name:"Hộp VIP Quốc Khánh ",desc:"6 bánh đặc biệt + hộp kỉ niệm ngày 2/9.",price:600000,imgs:["vip2-a.jpg","vip2-b.jpg"],badge:"VIP"},
+  {id:"V3",name:"Hộp VIP Hoàng Hoa Nguyệt Cát",desc:"6 bánh cao cấp + trà + quà tặng kèm.",price:900000,imgs:["vip3-a.jpg","vip3-b.jpg"],badge:"VIP"}
+];
+const NEWS = [
+  {id:"N1", date:"14/10/2026", emoji:"🎉", img:"tin-1.jpg",
+   title:"Chương trình khuyến mãi tri ân khách hàng",
+   sum:"Ưu đãi hấp dẫn cho khách mua lẻ, mua combo và đặt hộp quà số lượng lớn tại Lâm Thủy.",
+   body:`<p>Nhằm tri ân quý khách đã tin tưởng và đồng hành cùng Lâm Thủy, tiệm triển khai chương trình khuyến mãi với nhiều ưu đãi hấp dẫn.</p>
+   <h4>Nội dung ưu đãi</h4>
+   <ul>
+     <li><b>Giảm 10%</b> cho đơn hàng từ 500.000đ.</li>
+     <li><b>Giảm 15%</b> cho đơn hàng từ 1.000.000đ.</li>
+     <li><b>Tặng túi quà</b> cho mỗi hộp VIP.</li>
+     <li><b>Ưu đãi riêng</b> cho khách đặt số lượng lớn (doanh nghiệp, đối tác).</li>
+   </ul>
+   <h4>Thời gian áp dụng</h4>
+   <p>Từ ngày <b>14/10/2026</b> đến hết ngày <b>31/10/2026</b>, áp dụng tại cả 4 cơ sở và khi đặt hàng qua hotline.</p>
+   <h4>Lưu ý</h4>
+   <ul>
+     <li>Không áp dụng đồng thời với các chương trình khuyến mãi khác.</li>
+     <li>Số lượng ưu đãi có hạn.</li>
+   </ul>
+   <p>Liên hệ hotline <b>033 981 9526</b> để được tư vấn và đặt hàng.</p>`},
+
+  {id:"N2", date:"12/10/2026", emoji:"👩‍🍳", img:"tin-2.jpg",
+   title:"Lâm Thủy tuyển dụng nhân viên các vị trí",
+   sum:"Gia nhập đội ngũ Lâm Thủy: cơ hội việc làm ổn định, môi trường thân thiện, thu nhập hấp dẫn.",
+   body:`<p>Để đáp ứng nhu cầu phát triển, Lâm Thủy cần tuyển thêm nhân sự cho các cơ sở tại Hà Nội, TP. Hồ Chí Minh và Ninh Bình.</p>
+   <h4>Vị trí tuyển dụng</h4>
+   <ul>
+     <li><b>Nhân viên bán hàng:</b> tư vấn, đón tiếp khách tại cửa hàng.</li>
+     <li><b>Thợ làm bánh / phụ bếp:</b> hỗ trợ sản xuất bánh theo công thức của tiệm.</li>
+     <li><b>Nhân viên đóng gói, giao hàng:</b> đóng gói hộp quà, giao đơn cho khách.</li>
+     <li><b>Nhân viên chăm sóc khách hàng online:</b> trả lời tin nhắn, chốt đơn.</li>
+   </ul>
+   <h4>Quyền lợi</h4>
+   <ul>
+     <li>Lương thỏa thuận theo năng lực, thưởng theo mùa cao điểm.</li>
+     <li>Được hướng dẫn nghề, không yêu cầu kinh nghiệm với một số vị trí.</li>
+     <li>Môi trường làm việc thân thiện, như người trong gia đình.</li>
+   </ul>
+   <h4>Cách ứng tuyển</h4>
+   <p>Gọi hotline <b>033 981 9526</b> hoặc đến trực tiếp một trong các cơ sở của Lâm Thủy để nộp hồ sơ.</p>`},
+
+  {id:"N3", date:"10/10/2026", emoji:"📋", img:"tin-3.jpg",
+   title:"Chính sách bán hàng, giao hàng và đổi trả",
+   sum:"Thông tin về cách đặt hàng, thanh toán, giao nhận, bảo quản và đổi trả sản phẩm tại Lâm Thủy.",
+   body:`<p>Lâm Thủy luôn mong muốn mang đến cho quý khách trải nghiệm mua sắm thuận tiện và yên tâm. Dưới đây là các chính sách chính của tiệm.</p>
+   <h4>1. Đặt hàng</h4>
+   <p>Quý khách đặt hàng qua website, hotline <b>033 981 9526</b> hoặc trực tiếp tại cửa hàng. Đơn số lượng lớn nên đặt trước để tiệm chuẩn bị chu đáo.</p>
+   <h4>2. Thanh toán</h4>
+   <ul>
+     <li>Thanh toán tiền mặt tại cửa hàng hoặc khi nhận hàng.</li>
+     <li>Chuyển khoản ngân hàng (nhân viên sẽ cung cấp thông tin khi xác nhận đơn).</li>
+   </ul>
+   <h4>3. Giao hàng</h4>
+   <ul>
+     <li>Giao hàng tận nơi trong khu vực nội thành, phí tùy khoảng cách.</li>
+     <li>Có hỗ trợ giao hàng đi các tỉnh, thời gian tùy địa chỉ nhận.</li>
+   </ul>
+   <h4>4. Bảo quản sản phẩm</h4>
+   <p>Bánh làm thủ công, không chất bảo quản nên cần bảo quản nơi khô ráo, thoáng mát và dùng trong hạn ghi trên bao bì.</p>
+   <h4>5. Đổi trả</h4>
+   <ul>
+     <li>Đổi hoặc hoàn tiền nếu sản phẩm bị lỗi, hư hỏng do quá trình sản xuất hoặc vận chuyển.</li>
+     <li>Quý khách vui lòng báo trong ngày nhận hàng, kèm hình ảnh sản phẩm.</li>
+   </ul>`}
+];
+/* ============ TIỆN ÍCH ============ */
+const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
+const money = n => n.toLocaleString('vi-VN') + 'đ';
+let lang = 'vi';
+const T = {
+  vi:{added:"Đã thêm vào giỏ hàng",empty:"Giỏ hàng đang trống",add:"🛒 Thêm vào giỏ",unit:"(đã gồm VAT)",sent:"Thông tin đơn hàng đã được điền vào form!"},
+  en:{added:"Added to cart",empty:"Your cart is empty",add:"🛒 Add to cart",unit:"(VAT incl.)",sent:"Your order details were filled into the form!"}
+};
+const t = k => T[lang][k];
+
+/* Hình bánh minh họa (SVG) khi chưa có ảnh thật */
+function moonSVG(h=0){
+  const sets=[["#C0509F","#8E2C80","#F6C9D6"],["#E08AB5","#B03F8F","#FFF0F5"],["#D9A441","#B07A1E","#FFF3D6"],["#A4399A","#5E1B54","#F6C9D6"]];
+  const [a,b,c]=sets[h%4];
+  return `<defs><radialGradient id="g${h}" cx="40%" cy="35%"><stop offset="0" stop-color="${a}"/><stop offset="1" stop-color="${b}"/></radialGradient></defs>
+  <ellipse cx="100" cy="108" rx="82" ry="76" fill="rgba(0,0,0,.18)"/>
+  <circle cx="100" cy="98" r="82" fill="url(#g${h})"/>
+  <circle cx="100" cy="98" r="70" fill="none" stroke="${c}" stroke-width="3" stroke-dasharray="3 6"/>
+  <circle cx="100" cy="98" r="48" fill="none" stroke="${c}" stroke-width="2.5"/>
+  <text x="100" y="112" text-anchor="middle" font-family="Pacifico,cursive" font-size="40" fill="${c}">LT</text>
+  <path d="M100 20v14M100 162v14M22 98h14M164 98h14" stroke="${c}" stroke-width="3" stroke-linecap="round"/>`;
+}
+$$('[data-moon]').forEach(s => s.innerHTML = moonSVG(+(s.dataset.hue||0)));
+
+/* ============ RENDER SẢN PHẨM ============ */
+function cardHTML(p,i){
+  const cover = p.img || (p.imgs && p.imgs[0]) || '';
+  const art = cover ? `<img class="real" src="${cover}" alt="${p.name}" onerror="this.remove()">` : '';
+  const gal = p.imgs && p.imgs.length > 1;
+  return `<div class="card${gal?' has-gallery':''}" data-id="${p.id}" data-name="${p.name.toLowerCase()}">
+    <div class="img">${p.badge?`<span class="badge">${p.badge}</span>`:''}${art}<svg viewBox="0 0 200 200">${moonSVG(i%4)}</svg>${gal?`<span class="photo-count">📷 ${p.imgs.length}</span>`:''}</div>
+    <div class="body"><h4>${p.name}</h4><p class="desc">${p.desc}</p>
+      <div class="row"><div class="price">${money(p.price)}<br><small>${t('unit')}</small></div>
+      <button class="add" data-id="${p.id}">${t('add')}</button></div></div></div>`;
+}
+function render(){
+  $('#gridBest').innerHTML = BEST.map(cardHTML).join('');
+  $('#gridCombo').innerHTML = COMBO.map(cardHTML).join('');
+  $('#gridVip').innerHTML = VIP.map(cardHTML).join('');
+  $('#footList').innerHTML = [...BEST,...COMBO].map(p=>`<li><span>${p.name}</span><span>${money(p.price)}</span></li>`).join('');
+  $('#footVip').innerHTML = VIP.map(p=>`<li><span>${p.name}</span><span>${money(p.price)}</span></li>`).join('');
+  renderNews()
+filter();
+}
+const ALL = [...BEST,...COMBO,...VIP];
+
+/* ============ GIỎ HÀNG ============ */
+let cart = {};
+try{ cart = JSON.parse(localStorage.getItem('lt_cart')||'{}') }catch(e){}
+function save(){ try{localStorage.setItem('lt_cart',JSON.stringify(cart))}catch(e){} }
+function drawCart(){
+  const ids = Object.keys(cart).filter(id=>cart[id]>0);
+  const count = ids.reduce((s,id)=>s+cart[id],0);
+  $('#cartCount').textContent = count;
+  let total = 0;
+  $('#cartItems').innerHTML = ids.length ? ids.map(id=>{
+    const p = ALL.find(x=>x.id===id); total += p.price*cart[id];
+    return `<div class="item"><div class="nm">${p.name}<small>${money(p.price)}</small></div>
+      <div class="qty"><button data-d="-1" data-id="${id}">−</button><b>${cart[id]}</b><button data-d="1" data-id="${id}">+</button></div></div>`;
+  }).join('') : `<p class="empty">🥮<br>${t('empty')}</p>`;
+  $('#cartTotal').textContent = money(total);
+  save();
+}
+function toast(msg){const e=$('#toast');e.textContent=msg;e.classList.add('show');setTimeout(()=>e.classList.remove('show'),1800)}
+function openCart(o){ $('#drawer').classList.toggle('open',o); $('#overlay').classList.toggle('open',o) }
+
+document.addEventListener('click',e=>{
+  const add = e.target.closest('.add');
+  if(add){ cart[add.dataset.id]=(cart[add.dataset.id]||0)+1; drawCart(); toast(t('added')); }
+  const q = e.target.closest('.qty button');
+  if(q){ cart[q.dataset.id]=Math.max(0,(cart[q.dataset.id]||0)+ +q.dataset.d); drawCart(); }
+});
+$('#cartBtn').onclick = ()=>openCart(true);
+$('#closeCart').onclick = $('#overlay').onclick = ()=>openCart(false);
+$('#checkout').onclick = ()=>{
+  const lines = Object.keys(cart).filter(id=>cart[id]>0).map(id=>{const p=ALL.find(x=>x.id===id);return `${p.name} x${cart[id]}`});
+  if(lines.length){ $('#fOrder').value = lines.join(', '); toast(t('sent')); }
+  openCart(false); location.hash = '#lien-he';
+};
+
+/* ============ FORM LIÊN HỆ (demo – chưa có máy chủ) ============ */
+$('#contactForm').onsubmit = e=>{
+  e.preventDefault();
+  $('#ok').style.display='block';
+  e.target.reset();
+  setTimeout(()=>$('#ok').style.display='none',5000);
+};
+
+/* ============ TÌM KIẾM ============ */
+function filter(){
+  const q = $('#searchInput').value.trim().toLowerCase();
+  $$('.card').forEach(c=>c.classList.toggle('hidden', q && !c.dataset.name.includes(q)));
+}
+$('#btnSearch').onclick = ()=>{ $('#searchbox').classList.toggle('open'); $('#searchInput').focus() };
+$('#searchInput').addEventListener('input',filter);
+$('#searchInput').addEventListener('keydown',e=>{ if(e.key==='Enter') location.hash='#banh-trung-thu' });
+
+/* ============ ĐA NGÔN NGỮ VN / EN ============ */
+function setLang(l){
+  lang = l;
+  document.documentElement.lang = l;
+  $('#btnVN').classList.toggle('active',l==='vi');
+  $('#btnEN').classList.toggle('active',l==='en');
+  $$('[data-vi]').forEach(el=>{
+    if(!el.dataset.viSaved){ el.dataset.viSaved=1 }
+    el.innerHTML = el.dataset[l];
+  });
+  $$('[data-vi-ph]').forEach(el=>el.placeholder = el.dataset[l==='vi'?'viPh':'enPh']);
+  render(); drawCart();
+}
+$('#btnVN').onclick = ()=>setLang('vi');
+$('#btnEN').onclick = ()=>setLang('en');
+
+/* ============ MENU MOBILE + ACTIVE LINK ============ */
+$('#burger').onclick = ()=>$('#nav').classList.toggle('open');
+$$('#nav a').forEach(a=>a.addEventListener('click',()=>$('#nav').classList.remove('open')));
+const secs = ['top','banh-trung-thu','hop-vip','lien-he','tin-tuc'];
+addEventListener('scroll',()=>{
+  let cur='top';
+  secs.forEach(id=>{const el=document.getElementById(id); if(el && el.getBoundingClientRect().top<140) cur=id});
+  $$('#nav a').forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+cur));
+});
+
+/* ============ BANNER SLIDER ============ */
+const slides = $$('.slide'); let idx = 0, timer;
+$('#dots').innerHTML = slides.map((_,i)=>`<i data-i="${i}"></i>`).join('');
+function go(n){
+  idx = (n+slides.length)%slides.length;
+  slides.forEach((s,i)=>s.classList.toggle('active',i===idx));
+  $$('#dots i').forEach((d,i)=>d.classList.toggle('active',i===idx));
+}
+function auto(){ clearInterval(timer); timer=setInterval(()=>go(idx+1),5000) }
+$('#prev').onclick=()=>{go(idx-1);auto()};
+$('#next').onclick=()=>{go(idx+1);auto()};
+$('#dots').onclick=e=>{ if(e.target.dataset.i){go(+e.target.dataset.i);auto()} };
+go(0); auto();
+
+/* ============ XEM ẢNH SẢN PHẨM ============ */
+let gal=[], gi=0;
+function showGal(){
+  $('#lbImg').src = gal[gi];
+  $$('#lbThumbs img').forEach((im,i)=>im.classList.toggle('on',i===gi));
+}
+function openGal(p){
+  gal = p.imgs; gi = 0;
+  $('#lbTitle').textContent = p.name;
+  $('#lbThumbs').innerHTML = gal.map((s,i)=>`<img src="${s}" data-i="${i}" alt="">`).join('');
+  showGal();
+  $('#lightbox').classList.add('open');
+}
+function closeGal(){ $('#lightbox').classList.remove('open') }
+
+document.addEventListener('click',e=>{
+  const c = e.target.closest('.card.has-gallery');
+  if(c && !e.target.closest('.add')){
+    const p = ALL.find(x=>x.id===c.dataset.id);
+    if(p && p.imgs) openGal(p);
+  }
+  const th = e.target.closest('#lbThumbs img');
+  if(th){ gi = +th.dataset.i; showGal(); }
+  if(e.target.id==='lightbox') closeGal();
+});
+$('#lbClose').onclick = closeGal;
+$('#lbPrev').onclick = ()=>{ gi=(gi-1+gal.length)%gal.length; showGal() };
+$('#lbNext').onclick = ()=>{ gi=(gi+1)%gal.length; showGal() };
+document.addEventListener('keydown',e=>{
+  if(!$('#lightbox').classList.contains('open')) return;
+  if(e.key==='Escape') closeGal();
+  if(e.key==='ArrowLeft') $('#lbPrev').click();
+  if(e.key==='ArrowRight') $('#lbNext').click();
+});
+/* ============ TIN TỨC ============ */
+function renderNews(){
+  $('#newsGrid').innerHTML = NEWS.map(n=>`<article data-news="${n.id}">
+    <div class="th"><img class="real" src="${n.img}" alt="" onerror="this.remove()">${n.emoji}</div>
+    <div class="in"><time>${n.date}</time><h4>${n.title}</h4><p>${n.sum}</p>
+    <span class="more">${lang==='vi'?'Xem thêm »':'Read more »'}</span></div></article>`).join('');
+}
+document.addEventListener('click',e=>{
+  const a = e.target.closest('[data-news]');
+  if(a){
+    e.preventDefault();
+    const n = NEWS.find(x=>x.id===a.dataset.news);
+    $('#newsTitle').textContent = n.title;
+    $('#newsDate').textContent = n.date;
+    $('#newsBody').innerHTML = n.body;
+    $('#newsBox').classList.add('open');
+  }
+  if(e.target.id==='newsBox') $('#newsBox').classList.remove('open');
+});
+$('#newsClose').onclick = ()=>$('#newsBox').classList.remove('open');
+/* ============ KHỞI TẠO ============ */
+render(); drawCart();
+</script>
+</body>
+</html>
